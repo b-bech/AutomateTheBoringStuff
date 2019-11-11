@@ -1,24 +1,26 @@
-# This is a guess the number game
+# This program asks a user to state their name and then guess a random number 1-20 in 5 tries
 import random
 
-print('Hello what is your name?')
-name = input()
+# This section asks for the users name
+print('Hi what is your name?')
+userName = input()
 
-print('Well, ' + name + ', I am thinking of a number between 1 and 20. Can you guess it?')
+# This section explains the game to the user
+print('Hi ' + userName + '. I am thinking of a number 1 through 20. Can you guess it?')
+
+# This section generates the random number and lets the user guess 5 times
 secretNumber = random.randint(1, 20)
 
-for guessesTaken in range(1, 7):
-	print('Take a guess.')
+for guessesTaken in range(1, 6):
 	guess = int(input())
-	
-	if guess < secretNumber:
-		print('Your guess is too low.')
-	elif guess > secretNumber:
-		print('Your guess is too high')
+	if guess > secretNumber:
+		print(str(guess) + ' is too high.')
+	elif guess < secretNumber:
+		print(str(guess) + ' is too low.')
 	else:
-		break # This condition is for the correct guess
-		
+		break # Correct guess
+	
 if guess == secretNumber:
-	print('Good job, ' + name + '! You guessed my number in ' + str(guessesTaken) + ' guesses!')
-else: 
-	print('Nope, the number I was thinking of was ' + str(secretNumber))
+	print('You guessed my number in only ' + str(guessesTaken) + ' tries.')
+else:
+	print('Wrong! It was ' + str(secretNumber) + '.')
